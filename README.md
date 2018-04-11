@@ -70,7 +70,7 @@ spec:
   selector:
     matchLabels:
       app: your-app
-  replicas: 1 # you will probably want just one with remote forwarding
+  replicas: 1 # keep in mind you cannot bind more than once to the same port/interface
   template:
     metadata:
       labels:
