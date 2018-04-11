@@ -57,3 +57,40 @@ If you want to better understand _local_ (`-L`) and _remote_ (`-R`) port forward
 
 ## Kubernetes example
 
+The following example will forward all TCP connections to `localhost:8000` on _remote-host_ to the TCP port 8888 of your docker _your-app_ container.
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: your-app
+  labels:
+    app: your-app
+spec:
+  selector:
+    matchLabels:
+      app: your-app
+  replicas: 1 # you will probably want just one with remote forwarding
+  template:
+    metadata:
+      labels:
+        app: your-app
+    spec:
+      containers:
+      - name: your-app
+        image: your-org/your-app
+        command: ["./your-service.py"]
+        ports:
+        - containerPort: 8888
+      - name: sshtun
+        image: alexpirine/sshtun
+        args: ["-NTR", "8000:127.0.0.1:8888", "remote-user@remote-host"]
+        volumeMounts:
+          - name: sshtun-keys
+            mountPath: /etc/ssh/keys
+      volumes:
+        - name: sshtun-keys
+          secret:
+            secretName: sshtun-keys
+            defaultMode: 0400
+```
