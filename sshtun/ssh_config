@@ -1,0 +1,8 @@
+TCPKeepAlive no
+ServerAliveInterval 20
+ServerAliveCountMax 2
+StrictHostKeyChecking yes
+PasswordAuthentication no
+ExitOnForwardFailure yes
+IdentityFile /etc/ssh/keys/id_rsa
+GlobalKnownHostsFile /etc/ssh/keys/known_hosts
