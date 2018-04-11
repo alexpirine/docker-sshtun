@@ -55,7 +55,7 @@ This will forward all connections on the _remote-server_ host to `localhost:8000
 
 If you want to better understand _local_ (`-L`) and _remote_ (`-R`) port forwarding, take a look at the [ssh man page](https://linux.die.net/man/1/ssh). You might especially want to set `GatewayPorts clientspecified` in the ssh server config of the remote server, if you use remote port forwarding which doesn't bind to the loopback interface.
 
-## Kubernetes example
+## Example: remote port forwarding inside a Kubernetes pod
 
 The following example will forward all TCP connections to `localhost:8000` on _remote-host_ to the TCP port 8888 of the _your-app_ container.
 
