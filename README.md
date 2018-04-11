@@ -57,7 +57,7 @@ If you want to better understand _local_ (`-L`) and _remote_ (`-R`) port forward
 
 ## Kubernetes example
 
-The following example will forward all TCP connections to `localhost:8000` on _remote-host_ to the TCP port 8888 of your docker _your-app_ container.
+The following example will forward all TCP connections to `localhost:8000` on _remote-host_ to the TCP port 8888 of the _your-app_ container.
 
 ```yaml
 apiVersion: extensions/v1beta1
