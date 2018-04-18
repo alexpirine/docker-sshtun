@@ -94,3 +94,9 @@ spec:
             secretName: sshtun-keys
             defaultMode: 0400
 ```
+
+In order to create your `sshtun-keys` volume, you can use the following command:
+
+```sh
+kubectl create secret generic sshtun-keys --from-file=id_rsa=keys/id_rsa --from-file=known_hosts=keys/known_hosts
+```
